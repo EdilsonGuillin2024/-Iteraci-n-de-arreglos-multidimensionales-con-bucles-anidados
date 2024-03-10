@@ -1,0 +1,61 @@
+
+print("***********************UEA*******************")
+print("*****************TECNOLOGIAS DE LA INFORMACION***************")
+print("*****************PRACTICA DE FUNDAMENTOS DE PROGRAMACION*******************")
+print("función en Python que calcule la temperatura promedio de una ciudad durante un período de tiempo.")
+print("para ello se uso los dados del  ejercicio anyterior")
+print("")
+#DATOS ANTERIORES  
+temperaturas = [
+    # Quito
+    [
+        [15, 16, 15, 14, 15, 15, 16],  # Semana 1: Temperaturas diarias
+        [16, 15, 14, 15, 16, 16, 15]   # Semana 2: Temperaturas diarias
+    ],
+    # Guayaquil
+    [
+        [25, 26, 27, 26, 25, 26, 27],  # Semana 1: Temperaturas diarias
+        [26, 27, 28, 27, 26, 27, 28]   # Semana 2: Temperaturas diarias
+    ],
+    # Cuenca
+    [
+        [19, 18, 17, 18, 19, 18, 19],  # Semana 1: Temperaturas diarias
+        [18, 17, 18, 19, 20, 19, 18]   # Semana 2: Temperaturas diarias
+    ]
+] 
+ 
+
+  
+#definimos la funcion  con parametros    
+def calcular_promedios_ciudades(temperaturas, nombres_ciudades): #FUNCION CON PARAMETROS( recibe temperaturas y nombres de ciudades)
+
+    promedios_ciudades = {}
+
+    for indice_ciudad, ciudad in enumerate(temperaturas): #DECLARAROS UN FOR
+
+        suma_total = 0    #INICIALIZAMOSMLAS VARIBLES
+        dias_total = 0    #INICIALIZAMOS LAS VARIABLES
+
+        for semana in ciudad:
+#mediante el fort  contamos los dias de la seman  y las semanas 
+            suma_semana = sum(semana)
+            dias_semana = len(semana)
+#            usamos acumuladores
+            suma_total += suma_semana
+            dias_total += dias_semana
+
+        promedio_ciudad = suma_total / dias_total if dias_total else 0  # realizamos la operacion de  sumar los promedios totales  divididos para los dias 
+        promedios_ciudades[nombres_ciudades[indice_ciudad]] = promedio_ciudad # en este arreglo almacenamos la ciudad  y el promedio de temperatura 
+#por lo tanto retorna la funcion 
+    return promedios_ciudades
+#las ciudades  
+nombres_ciudades = ["Quito", "Guayaquil", "Cuenca"]
+
+# Calcular y mostrar los promedios de temperatura
+print("******************** reaultados Obtenidos por medio de la funcion*******************")
+print("**********************************************")
+promedios = calcular_promedios_ciudades(temperaturas, nombres_ciudades)
+ #Mostrar por consola  cada promedio con una iteracion  donde va el promedio la ciudad
+for ciudad, promedio in promedios.items():
+    print(f"{ciudad}: Promedio de temperatura {promedio:.2f}°C")
+    
